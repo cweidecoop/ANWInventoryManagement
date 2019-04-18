@@ -1,0 +1,23 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+<h1>Add User</h1>
+<hr />
+<form asp-controller="Inventory" asp-action="AddUser" method="post">
+    <div class="form-group">
+        <label asp-for="UserID"></label>
+        <input class="form-control" value="" asp-for="UserID" />
+        <span style="color:red" asp-validation-for="UserID"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input class="form-control" asp-for="UserName" />
+        <span style="color:red" asp-validation-for="UserName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Location"></label>
+        <input class="form-control" asp-for="Location" />
+    </div>
+
+    <input class="btn btn-secondary btn-sm" type="submit" value="Add User" />
+
+</form>

@@ -1,0 +1,52 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+<h1>@Model.Category.Name</h1>
+
+<h3 style="color:limegreen">Available Items</h3>
+<h5>Total Checked Out Items: @Model.AvailableItems.Count()</h5>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Item Barcode</th>
+            <th scope="col">Item Purchase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AvailableItems)
+        {
+            <tr>
+                <td>@item.Name </td>
+                <td>@item.ItemID</td>
+                <td>@item.PurchaseDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr style="border-color:red" />
+
+<h3 style="color:red">Checked-Out Items</h3>
+<h5>Total Checked Out Items: @Model.CheckedOutItems.Count()</h5>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Item Barcode</th>
+            <th scope="col">Item Purchase Date</th>
+            <th scope="col">Checked Out To</th>
+            <th scope="col">ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CheckedOutItems)
+        {
+            <tr>
+                <td>@item.Name </td>
+                <td>@item.ItemID</td>
+                <td>@item.PurchaseDate</td>
+                <td>@item.CheckedOutToName</td>
+                <td>@item.CheckedOutToID</td>
+            </tr>
+        }
+    </tbody>
+</table>

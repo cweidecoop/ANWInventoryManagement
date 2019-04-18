@@ -1,0 +1,23 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+<h1>Check Out</h1>
+<hr />
+<form asp-controller="Inventory" asp-action="CheckOut" asp-method="post">
+
+    <div class="form-group">
+        <label asp-for="CheckOutDeviceBarcode"></label>
+        <input class="form-control" asp-for="CheckOutDeviceBarcode" />
+        <span style="color:red" asp-validation-for="CheckOutDeviceBarcode"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CheckOutUser"></label>
+        <input class="form-control" value="" asp-for="CheckOutUser" />
+        <span style="color:red" asp-validation-for="CheckOutUser"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CheckOutComment"></label>
+        <input class="form-control" asp-for="CheckOutComment" />
+    </div>
+        <input type="submit" value="Check Out" />
+
+</form>

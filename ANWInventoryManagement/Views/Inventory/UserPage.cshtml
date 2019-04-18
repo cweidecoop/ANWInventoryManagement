@@ -1,0 +1,77 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+<h1>@Model.User.Name</h1>
+
+<hr style="border-color:cornflowerblue" />
+
+<h4 style="color:yellowgreen">Currently Checked Out Items</h4>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Device Name</th>
+            <th scope="col">Device Category</th>
+            <th scope="col">Check-Out Date</th>
+            <th scope="col">Barcode</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.CheckedOutByUser)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Category</td>
+                <td>@item.LastCheckOut</td>
+                <td>@item.ItemID</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<h4 style="color:yellowgreen">Check Ins</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Device Name</th>
+            <th scope="col">Device Category</th>
+            <th scope="col">Check-In Date</th>
+            <th scope="col">Barcode</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CheckedIn)
+        {
+            <tr>
+                <td>@item.DeviceName</td>
+                <td>@item.DeviceCategory</td>
+                <td>@item.CheckInTime</td>
+                <td>@item.DeviceID</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<h4 style="color:yellowgreen">Check Outs</h4>
+<table class="table table-hover">
+    <thead>
+        <tr> 
+            <th scope="col">Device Name</th>
+            <th scope="col">Device Category</th>
+            <th scope="col">Check-Out Date</th>
+            <th scope="col">Barcode</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CheckedOut)
+        {
+            <tr>
+                <td>@item.DeviceName</td>
+                <td>@item.DeviceCategory</td>
+                <td>@item.CheckOutTime</td>
+                <td>@item.DeviceID</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
