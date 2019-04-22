@@ -23,60 +23,63 @@ namespace ANWInventoryManagement.ViewModels
         public IList<Item> CheckedOutItems { get; set; }
         public Category Category { get; set; }
 
-        [Required]
+        
         [Display(Name ="Category Name")]
         public string CategoryName { get; set; }
 
-        [Required]
+        
         [Display(Name = "Device Barcode")]
         public string CheckInDeviceBarcode { get; set; }
 
-        [Required]
+       
         [Display(Name = "User Barcode")]
         public int CheckInUser { get; set; }
 
         [Display(Name ="Comment")]
         public string CheckInComment { get; set; }
 
-        [Required]
+        
         [Display(Name = "Repair Needed?")]
         public string CheckInForRepair { get; set; }
 
-        [Required]
         [Display(Name ="Device Barcode")]
         public string CheckOutDeviceBarcode { get; set; }
 
-        [Required]
+        
         [Display(Name = "User Barcode")]   
         public int CheckOutUser { get; set; }
 
         [Display(Name = "Comment")]
         public string CheckOutComment { get; set; }
 
-        [Required]
+        
         [Display(Name = "User Barcode ID")]
         public int UserID { get; set; }
 
-        [Required]
+        
         [Display(Name ="Name")]
         public string UserName { get; set; }
 
         public string Location { get; set; }
 
-        [Required]
+        
         [Display(Name ="Device")]
         public string DeviceName { get; set; }
 
-        [Required]
+        
         [Display(Name ="Barcode ID")]  
         public string BarcodeID { get; set; }
 
-        [Required]
+        
         [Display(Name = "Category")]
         public int CategoryID { get; set; }
 
         [Display(Name = "Purchase Date")]
         public DateTime PurchaseDate { get; set; }  
+
+        
+        [Display(Name ="Windows Key")]
+        public string WindowsKey { get; set; }
 
         public Category AddItemCategory { get; set; }
         public List<SelectListItem> AddItemCategories { get; set; }

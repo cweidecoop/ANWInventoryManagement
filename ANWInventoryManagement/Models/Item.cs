@@ -18,6 +18,7 @@ namespace ANWInventoryManagement.Models
         public string CheckedOutToName { get; set; }
         public DateTime LastCheckOut { get; set; }
         public DateTime LastCheckIn { get; set; }
+        public string WindowsKey { get; set; }
 
     }
 }

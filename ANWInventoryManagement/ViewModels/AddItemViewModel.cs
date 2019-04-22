@@ -10,19 +10,19 @@ namespace ANWInventoryManagement.ViewModels
 {
     public class AddItemViewModel
     {
-        [Required]
+        
         [Display(Name = "Device")]
         public string Name { get; set; }
 
-        [Required]
+        
         [Display(Name = "Barcode ID")]
         public string BarcodeID { get; set; }
 
-        [Required]
+        
         [Display(Name = "Category")]
         public int CategoryID { get; set; }
 
-        [Required]
+        
         [Display(Name = "Purchase Date")]
         public DateTime PurchaseDate { get; set; }
 
