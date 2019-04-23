@@ -30,6 +30,11 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="AddItem">Add Item</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="AddCategory">Add Category</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="AddUser">Add User</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="CheckIn">Check-In</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="CheckOut">Check-Out</a>
                         </li>
                     </ul>
                 </div>
@@ -42,12 +47,6 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - ANWInventoryManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
