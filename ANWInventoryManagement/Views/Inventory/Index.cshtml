@@ -2,12 +2,12 @@
 
 <form asp-controller="Inventory" asp-action="UserPage" method="post">
     <div class="form-group">
-        <label asp-for="User"></label>
-        <input class="form-control" value="1" asp-for="User" />
-        <span style="color:red" asp-validation-for="User"></span>
+        <label asp-for="UserSearch"></label>
+        <input class="form-control" value="" asp-for="UserSearch" />
+        <span style="color:red" asp-validation-for="UserSearch"></span>
     </div>
 
-    <input class="btn btn-secondary btn-sm" type="submit" value="Add User" />
+    <input class="btn btn-secondary btn-sm" type="submit" value="Search User" />
 
 </form>
 

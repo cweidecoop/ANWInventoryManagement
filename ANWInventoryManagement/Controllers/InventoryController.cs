@@ -36,6 +36,7 @@ namespace ANWInventoryManagement.Controllers
             return Redirect("/Inventory/UserPage/" + inventoryViewModel.UserSearch);
         }
 
+
         public IActionResult AddItem()
         {
             IEnumerable<Category> addItemCategories = _context.Categories.ToList();
@@ -192,7 +193,7 @@ namespace ANWInventoryManagement.Controllers
 
                 _context.CheckIns.Add(newCheckIn);
                 _context.SaveChanges();
-                item.CheckedOutToID = 9999;
+                item.CheckedOutToID = 99999;
                 item.CheckedOutToName = null;
 
                 return Redirect("/Inventory");
@@ -281,7 +282,7 @@ namespace ANWInventoryManagement.Controllers
             return Redirect("/Inventory");
         }
 
-        public  IActionResult UserPage(int id)
+        public IActionResult UserPage(int id)
         {
             var checkedOutItems = _context.CheckOuts.Where(i => i.UserID == id).OrderByDescending(i => i.CheckOutTime).ToList();
             var checkedInItems = _context.CheckIns.Where(i => i.UserID == id).OrderByDescending(i => i.CheckInTime).ToList();
