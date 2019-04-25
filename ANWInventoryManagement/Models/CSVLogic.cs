@@ -19,7 +19,7 @@ namespace ANWInventoryManagement.Models
 
         public void UploadUsers()
         {
-            using (var reader = new StreamReader(@"CLOCATIONGOESHERE"))
+            using (var reader = new StreamReader(@"C:\Users\Curtis Weide - IT\source\repos\ANWInventoryManagement\ANWInventoryManagement\Files\ID Card LIST - Sheet3.csv"))
             {
                 while (!reader.EndOfStream)
                 {
@@ -46,7 +46,7 @@ namespace ANWInventoryManagement.Models
         public void UploadItems()
         {
             //Ipad Inventory
-            using (var reader = new StreamReader(@"C:LKSJDFSLDKFJSLDKFJ"))
+            using (var reader = new StreamReader(@"FILELOCATION"))
             {
                 while (!reader.EndOfStream)
                 {
