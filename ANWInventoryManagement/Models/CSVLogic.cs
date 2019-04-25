@@ -43,60 +43,60 @@ namespace ANWInventoryManagement.Models
             }
         }
 
-        public void UploadItems()
-        {
-            //Ipad Inventory
-            using (var reader = new StreamReader(@"FILELOCATION"))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    Category category = _context.Categories.Where(c => c.Name == "iPad").FirstOrDefault();
+        //public void UploadItems()
+        //{
+        //    //Ipad Inventory
+        //    using (var reader = new StreamReader(@"FILELOCATION"))
+        //    {
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            var values = line.Split(',');
+        //            Category category = _context.Categories.Where(c => c.Name == "iPad").FirstOrDefault();
 
-                    var duplicateEntry = _context.Items.Where(i => i.ItemID == values[1]).FirstOrDefault();
+        //            var duplicateEntry = _context.Items.Where(i => i.ItemID == values[1]).FirstOrDefault();
 
-                    if (duplicateEntry == null)
-                    {
-                        Item newItem = new Item()
-                        {
-                            ItemID = values[1],
-                            Name = values[0],
-                            Category = category.Name,
-                            CategoryID = category.ID,
-                        };
+        //            if (duplicateEntry == null)
+        //            {
+        //                Item newItem = new Item()
+        //                {
+        //                    ItemID = values[1],
+        //                    Name = values[0],
+        //                    Category = category.Name,
+        //                    CategoryID = category.ID,
+        //                };
 
-                        _context.Items.Add(newItem);
-                    }
-                }
-            }
+        //                _context.Items.Add(newItem);
+        //            }
+        //        }
+        //    }
 
-            using (var reader = new StreamReader(@"asldkfjsdf"))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    Category category = _context.Categories.Where(c => c.Name == "Computer").FirstOrDefault();
+        //    using (var reader = new StreamReader(@"asldkfjsdf"))
+        //    {
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            var values = line.Split(',');
+        //            Category category = _context.Categories.Where(c => c.Name == "Computer").FirstOrDefault();
 
-                    var duplicateEntry = _context.Items.Where(i => i.ItemID == values[1]).FirstOrDefault();
+        //            var duplicateEntry = _context.Items.Where(i => i.ItemID == values[1]).FirstOrDefault();
 
-                    if (duplicateEntry == null)
-                    {
-                        Item newItem = new Item()
-                        {
-                            ItemID = values[1],
-                            Name = values[0],
-                            Category = category.Name,
-                            CategoryID = category.ID
-                        };
+        //            if (duplicateEntry == null)
+        //            {
+        //                Item newItem = new Item()
+        //                {
+        //                    ItemID = values[1],
+        //                    Name = values[0],
+        //                    Category = category.Name,
+        //                    CategoryID = category.ID
+        //                };
 
-                        _context.Items.Add(newItem);
-                    }
-                }
-            }
+        //                _context.Items.Add(newItem);
+        //            }
+        //        }
+        //    }
 
-            _context.SaveChanges();
-        }
+        //    _context.SaveChanges();
+        //}
     }
 }

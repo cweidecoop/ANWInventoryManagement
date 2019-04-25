@@ -316,7 +316,7 @@ namespace ANWInventoryManagement.Controllers
         public IActionResult UploadDb()
         {
             var csvLogic = new CSVLogic(_context);
-            csvLogic.UploadItems();
+            //csvLogic.UploadItems();
             csvLogic.UploadUsers();
             return Redirect("/Inventory");
         }

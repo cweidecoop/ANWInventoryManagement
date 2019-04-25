@@ -1,5 +1,17 @@
-﻿
-@foreach(var category in Model.Categories)
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+<form asp-controller="Inventory" asp-action="UserPage" method="post">
+    <div class="form-group">
+        <label asp-for="User"></label>
+        <input class="form-control" value="1" asp-for="User" />
+        <span style="color:red" asp-validation-for="User"></span>
+    </div>
+
+    <input class="btn btn-secondary btn-sm" type="submit" value="Add User" />
+
+</form>
+
+@foreach (var category in Model.Categories)
 {
     <a asp-controller="Inventory" asp-action="Category" asp-route-id="@category.ID">@category.Name</a>
 }
