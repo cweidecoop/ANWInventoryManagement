@@ -33,7 +33,25 @@ namespace ANWInventoryManagement.Controllers
         [HttpPost]
         public IActionResult Index(InventoryViewModel inventoryViewModel)
         {
-            return Redirect("/Inventory/UserPage/" + inventoryViewModel.UserSearch);
+
+            //var checkedOutItems = _context.CheckOuts.Where(i => i.UserID == inventoryViewModel.UserSearch).OrderByDescending(i => i.CheckOutTime).ToList();
+            //var checkedInItems = _context.CheckIns.Where(i => i.UserID == inventoryViewModel.UserSearch).OrderByDescending(i => i.CheckInTime).ToList();
+            //var user = _context.Users.Where(i => i.UserID == inventoryViewModel.UserSearch).FirstOrDefault();
+            //var categories = _context.Categories.ToList();
+            //var currentlyCheckedOutItems = _context.Items.Where(i => i.CheckedOutToID == inventoryViewModel.UserSearch).ToList();
+
+            //InventoryViewModel userPageViewModel = new InventoryViewModel
+            //{
+            //    CheckedIn = checkedInItems,
+            //    CheckedOut = checkedOutItems,
+            //    User = user,
+            //    Categories = categories,
+            //    CheckedOutByUser = currentlyCheckedOutItems
+            //};
+             
+            //return View("UserPage", inventoryViewModel.UserSearch);
+            //return Redirect("/Inventory/UserPage/" + inventoryViewModel.UserSearch);
+            return RedirectToAction("UserPage", "Inventory", new { id = inventoryViewModel.UserSearch });
         }
 
 
@@ -282,6 +300,7 @@ namespace ANWInventoryManagement.Controllers
             return Redirect("/Inventory");
         }
 
+        [HttpGet]
         public IActionResult UserPage(int id)
         {
             var checkedOutItems = _context.CheckOuts.Where(i => i.UserID == id).OrderByDescending(i => i.CheckOutTime).ToList();
