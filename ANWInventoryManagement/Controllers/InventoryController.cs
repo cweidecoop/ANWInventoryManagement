@@ -300,7 +300,7 @@ namespace ANWInventoryManagement.Controllers
             return Redirect("/Inventory");
         }
 
-        [HttpGet]
+        
         public IActionResult UserPage(int id)
         {
             var checkedOutItems = _context.CheckOuts.Where(i => i.UserID == id).OrderByDescending(i => i.CheckOutTime).ToList();
@@ -339,6 +339,28 @@ namespace ANWInventoryManagement.Controllers
             //csvLogic.UploadItems();
             csvLogic.UploadUsers();
             return Redirect("/Inventory");
+        }
+
+        public IActionResult DeleteItem()
+        {
+            var categories = _context.Categories.ToList();
+
+            InventoryViewModel inventoryViewModel = new InventoryViewModel
+            {
+                Categories = categories
+            };
+
+            return View(inventoryViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteItem(InventoryViewModel inventoryViewModel)
+        {
+            Item item = _context.Items.Where(i => i.ItemID == inventoryViewModel.ItemID).FirstOrDefault();
+            _context.Remove(item);
+            _context.SaveChanges();
+            return Redirect("/Inventory/Index");
+
         }
     }
 }

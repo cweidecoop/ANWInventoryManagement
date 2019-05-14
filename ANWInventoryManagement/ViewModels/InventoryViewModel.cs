@@ -15,6 +15,7 @@ namespace ANWInventoryManagement.ViewModels
         [Display(Name = "User Search")]
         public int UserSearch { get; set; }
 
+        public string ItemID { get; set; }
         public User User { get; set; }
         public List<CheckOut> CheckedOut { get; set; }
         public List<CheckIn> CheckedIn { get; set; }

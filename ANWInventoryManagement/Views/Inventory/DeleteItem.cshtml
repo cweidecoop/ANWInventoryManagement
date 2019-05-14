@@ -1,0 +1,12 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+    <form asp-controller="Inventory" asp-action="DeleteItem" method="post">
+        <div class="form-group">
+            <label asp-for="ItemID"></label>
+            <input class="form-control" value="" asp-for="ItemID" />
+            <span style="color:red" asp-validation-for="ItemID"></span>
+        </div>
+
+        <input class="btn btn-secondary btn-sm" type="submit" value="Search User" />
+
+    </form>
