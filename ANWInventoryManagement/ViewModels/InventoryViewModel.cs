@@ -83,6 +83,7 @@ namespace ANWInventoryManagement.ViewModels
         public string WindowsKey { get; set; }
 
         public Category AddItemCategory { get; set; }
+
         public List<SelectListItem> AddItemCategories { get; set; }
 
         public IList<Item> CheckedOutByUser { get; set; }
@@ -103,5 +104,6 @@ namespace ANWInventoryManagement.ViewModels
                 });
             }
         }
+
     }
 }

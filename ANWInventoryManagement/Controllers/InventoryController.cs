@@ -209,10 +209,11 @@ namespace ANWInventoryManagement.Controllers
                     DeviceName = item.Name
                 };
 
-                _context.CheckIns.Add(newCheckIn);
-                _context.SaveChanges();
                 item.CheckedOutToID = 99999;
                 item.CheckedOutToName = null;
+                _context.CheckIns.Add(newCheckIn);
+                _context.SaveChanges();
+                
 
                 return Redirect("/Inventory");
             }

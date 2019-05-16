@@ -11,6 +11,7 @@
 
 </form>
 
+
 @foreach (var category in Model.Categories)
 {
     <a asp-controller="Inventory" asp-action="Category" asp-route-id="@category.ID">@category.Name</a>
