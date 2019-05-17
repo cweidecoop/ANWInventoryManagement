@@ -382,6 +382,8 @@ namespace ANWInventoryManagement.Controllers
         {
             var checkOuts = _context.CheckOuts.Where(i => i.DeviceID == barcode).OrderByDescending(i => i.CheckOutTime).ToList();
             var checkIns = _context.CheckIns.Where(i => i.DeviceID == barcode).OrderByDescending(i => i.CheckInTime).ToList();
+            var item = _context.Items.Where(i => i.ItemID == barcode).FirstOrDefault();
+
 
             InventoryViewModel itemPageViewModel = new InventoryViewModel
             {
@@ -389,7 +391,18 @@ namespace ANWInventoryManagement.Controllers
                 CheckIns = checkIns
             };
 
-            return View(itemPageViewModel);
+
+            if (item == null)
+            {
+                ViewBag.message = "Barcode does not exist";
+                return View(itemPageViewModel);
+            }
+            else
+            {
+                return View(itemPageViewModel);
+            }
+
+
         }
 
         public IActionResult ResetDb()
