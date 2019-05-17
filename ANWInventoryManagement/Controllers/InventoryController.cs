@@ -48,12 +48,35 @@ namespace ANWInventoryManagement.Controllers
             //    Categories = categories,
             //    CheckedOutByUser = currentlyCheckedOutItems
             //};
-             
+
             //return View("UserPage", inventoryViewModel.UserSearch);
             //return Redirect("/Inventory/UserPage/" + inventoryViewModel.UserSearch);
-            return RedirectToAction("UserPage", "Inventory", new { id = inventoryViewModel.UserSearch });
+
+            if (inventoryViewModel.UserSearch >= 1)
+            {
+                return RedirectToAction("UserPage", "Inventory", new { id = inventoryViewModel.UserSearch });
+            }
+
+            if (inventoryViewModel.ItemSearch != null)
+            {
+                return RedirectToAction("ItemPage", "Inventory", new { barcode = inventoryViewModel.ItemSearch });
+            }
+
+
+           
+            return View();
         }
 
+        public IActionResult UserList()
+        {
+            var userList = _context.Users.ToList();
+            InventoryViewModel inventoryViewModel = new InventoryViewModel
+            {
+                UserList = userList
+            };
+
+            return View(inventoryViewModel);
+        }
 
         public IActionResult AddItem()
         {
@@ -79,20 +102,32 @@ namespace ANWInventoryManagement.Controllers
                     purchaseDate = DateTime.Today;
                 }
 
-                Item newItem = new Item
+                var dupItem = _context.Items.Where(i => i.ItemID == addItemViewModel.ItemID).FirstOrDefault();
+
+                if (dupItem == null)
                 {
-                    Name = addItemViewModel.DeviceName,
-                    ItemID = addItemViewModel.BarcodeID,
-                    PurchaseDate = purchaseDate,
-                    Category = categoryName,
-                    CategoryID = categoryID,
-                    CheckedOut = false
-                };
+                    Item newItem = new Item
+                    {
+                        Name = addItemViewModel.DeviceName,
+                        ItemID = addItemViewModel.BarcodeID,
+                        PurchaseDate = purchaseDate,
+                        Category = categoryName,
+                        CategoryID = categoryID,
+                        CheckedOut = false
+                    };
 
-                _context.Items.Add(newItem);
-                _context.SaveChanges();
+                    _context.Items.Add(newItem);
+                    _context.SaveChanges();
+                    return Redirect("/Inventory");
 
-                return Redirect("/Inventory");
+                }
+                else
+                {
+                    ViewBag.message = "Duplicate Barcode";
+                    return View(addItemViewModel);
+                }
+
+                
             }
 
             IList<Category> categories = _context.Categories.ToList();
@@ -120,7 +155,11 @@ namespace ANWInventoryManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                User newUser = new User
+                var dupUser = _context.Users.Where(i => i.UserID == addUserViewModel.UserID).FirstOrDefault();
+
+                if (dupUser != null)
+                {
+                                    User newUser = new User
                 {
                     Name = addUserViewModel.DeviceName,
                     UserID = addUserViewModel.UserID,
@@ -131,6 +170,8 @@ namespace ANWInventoryManagement.Controllers
                 _context.SaveChanges();
 
                 return Redirect("/Inventory");
+                }
+
             }
             var categories = _context.Categories.ToList();
 
@@ -320,6 +361,35 @@ namespace ANWInventoryManagement.Controllers
             };
 
             return View(userPageViewModel);
+        }
+
+        //public IActionResult ItemPage(InventoryViewModel inventoryViewModel)
+        //{
+        //    var checkOuts = _context.CheckOuts.Where(i => i.DeviceID == inventoryViewModel.ItemID).OrderByDescending(i => i.CheckOutTime).ToList();
+        //    var checkIns = _context.CheckIns.Where(i => i.DeviceID == inventoryViewModel.ItemID).OrderByDescending(i => i.CheckInTime).ToList();
+
+        //    InventoryViewModel itemPageViewModel = new InventoryViewModel
+        //    {
+        //        CheckOuts = checkOuts,
+        //        CheckIns = checkIns
+        //    };
+
+        //    return View(itemPageViewModel);
+        //}
+
+        
+        public IActionResult ItemPage(string barcode)
+        {
+            var checkOuts = _context.CheckOuts.Where(i => i.DeviceID == barcode).OrderByDescending(i => i.CheckOutTime).ToList();
+            var checkIns = _context.CheckIns.Where(i => i.DeviceID == barcode).OrderByDescending(i => i.CheckInTime).ToList();
+
+            InventoryViewModel itemPageViewModel = new InventoryViewModel
+            {
+                CheckOuts = checkOuts,
+                CheckIns = checkIns
+            };
+
+            return View(itemPageViewModel);
         }
 
         public IActionResult ResetDb()

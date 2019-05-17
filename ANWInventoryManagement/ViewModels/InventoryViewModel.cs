@@ -24,7 +24,12 @@ namespace ANWInventoryManagement.ViewModels
         public IList<Item> CheckedOutItems { get; set; }
         public Category Category { get; set; }
 
-        
+        public IList<CheckIn> CheckIns { get; set; }
+
+        public IList<CheckOut> CheckOuts { get; set; }
+
+        public string ItemSearch { get; set; }
+
         [Display(Name ="Category Name")]
         public string CategoryName { get; set; }
 
@@ -83,6 +88,8 @@ namespace ANWInventoryManagement.ViewModels
         public string WindowsKey { get; set; }
 
         public Category AddItemCategory { get; set; }
+
+        public List<User> UserList { get; set; }
 
         public List<SelectListItem> AddItemCategories { get; set; }
 

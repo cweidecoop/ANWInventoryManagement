@@ -1,0 +1,12 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+    <table>
+        <tbody>
+            @foreach (var user in Model.UserList)
+            {
+                <tr>
+                    <td>@user.Name </td>
+                    <td>@user.UserID</td>
+                </tr>
+            }
+        </tbody>
+    </table>

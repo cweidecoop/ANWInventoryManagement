@@ -1,0 +1,55 @@
+﻿@model ANWInventoryManagement.ViewModels.InventoryViewModel
+
+
+
+<h4 style="color:yellowgreen">@Model.DeviceName History</h4>
+<h1>@Model.DeviceName</h1>
+<h3>@Model.BarcodeID</h3>
+
+<hr style="border-color:cornflowerblue" />
+<h4 style="color:yellowgreen">Check Ins</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Check-In Date</th>
+            <th scope="col">Check-In User</th>
+            <th scope="col">Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CheckIns)
+        {
+            <tr>
+                <td>@item.CheckInTime</td>
+                <td>@item.UserName  @item.UserID</td>
+                <td>@item.Comment</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<h4 style="color:yellowgreen">Check Outs</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Check-Out Date</th>
+            <th scope="col">Check-Out To User</th>
+            <th scope="col">Comment</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CheckOuts)
+        {
+            <tr>
+                <td>@item.CheckOutTime</td>
+                <td>@item.UserName @item.UserID</td>
+                <td>@item.Comment</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

@@ -11,6 +11,17 @@
 
 </form>
 
+<form asp-controller="Inventory" asp-action="Index" method="post">
+    <div class="form-group">
+        <label asp-for="ItemSearch"></label>
+        <input class="form-control" value="" asp-for="ItemSearch" />
+        <span style="color:red" asp-validation-for="ItemSearch"></span>
+    </div>
+
+    <input class="btn btn-secondary btn-sm" type="submit" value="Search Barcode" />
+
+</form>
+
 
 @foreach (var category in Model.Categories)
 {
