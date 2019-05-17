@@ -17,6 +17,7 @@ namespace ANWInventoryManagement.ViewModels
 
         public string ItemID { get; set; }
         public User User { get; set; }
+
         public List<CheckOut> CheckedOut { get; set; }
         public List<CheckIn> CheckedIn { get; set; }
 
