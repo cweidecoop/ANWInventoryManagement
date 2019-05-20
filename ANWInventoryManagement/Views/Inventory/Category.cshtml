@@ -15,11 +15,11 @@
     <tbody>
         @foreach (var item in Model.AvailableItems)
         {
-            <tr>
-                <td>@item.Name </td>
-                <td>@item.ItemID</td>
-                <td>@item.PurchaseDate</td>
-            </tr>
+        <tr>
+            <td>@item.Name </td>
+            <td><a href="https://anwinventory.azurewebsites.net/Inventory/ItemPage?barcode=@item.ItemID">@item.ItemID</a></td>           
+            <td>@item.PurchaseDate</td>
+        </tr>
         }
     </tbody>
 </table>
@@ -40,13 +40,13 @@
     <tbody>
         @foreach (var item in Model.CheckedOutItems)
         {
-            <tr>
-                <td>@item.Name </td>
-                <td>@item.ItemID</td>
-                <td>@item.PurchaseDate</td>
-                <td>@item.CheckedOutToName</td>
-                <td>@item.CheckedOutToID</td>
-            </tr>
+        <tr>
+            <td>@item.Name </td>
+            <td><a asp-controller="Inventory" asp-action="ItemPage" asp-route-id="@item.ItemID">@item.ItemID</a></td>
+            <td>@item.PurchaseDate</td>
+            <td><a asp-controller="Inventory" asp-action="UserPage" asp-route-id="@item.CheckedOutToID">@item.CheckedOutToName</a></td>
+            <td>@item.CheckedOutToID</td>
+        </tr>
         }
     </tbody>
 </table>

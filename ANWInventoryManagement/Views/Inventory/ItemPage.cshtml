@@ -19,11 +19,12 @@
     <tbody>
         @foreach (var item in Model.CheckIns)
         {
-            <tr>
-                <td>@item.CheckInTime</td>
-                <td>@item.UserName  @item.UserID</td>
-                <td>@item.Comment</td>
-            </tr>
+        <tr>
+            <td>@item.CheckInTime</td>
+            <td><a asp-controller="Inventory" asp-action="UserPage" asp-route-id="@item.UserID">@item.UserName</a> @item.UserID</td>
+            
+            <td>@item.Comment</td>
+        </tr>
         }
     </tbody>
 </table>
@@ -43,7 +44,7 @@
         {
             <tr>
                 <td>@item.CheckOutTime</td>
-                <td>@item.UserName @item.UserID</td>
+                <td><a asp-controller="Inventory" asp-action="UserPage" asp-route-id="@item.UserID">@item.UserName</a> @item.UserID</td>
                 <td>@item.Comment</td>
 
             </tr>
